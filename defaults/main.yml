@@ -27,7 +27,7 @@ rhel7cis_setup_audit: false
 get_goss_file: download
 
 # Enable audits to run
-rhel7cis_run_audit: false
+rhel7cis_run_audit: true
 
 # Enable/Disable SELinux
 rhel7cis_selinux_disable: false
@@ -510,9 +510,9 @@ rhel7cis_rule_5_4_2_min_uid: 1000
 # Timeout value is in seconds. (60 seconds * 10 = 600)
 rhel7cis_shell_session_timeout:
   file: /etc/profile.d/tmout.sh
-  timeout: 600
+  timeout: 900
 # RHEL-07-5.4.1.5 Allow ansible to expire password for account with a last changed date in the future. False will just display users in violation, true will expire those users passwords
-rhel7cis_futurepwchgdate_autofix: true
+rhel7cis_futurepwchgdate_autofix: false
 
 # 5.4.2
 rhel7cis_int_gid: 1000
@@ -523,9 +523,9 @@ rhel7cis_int_gid: 1000
 rhel7cis_rpm_audit_file: /var/tmp/rpm_file_check
 
 # RHEL-07_6.1.10 Allow ansible to adjust world-writable files. False will just display world-writable files, True will remove world-writable
-rhel7cis_no_world_write_adjust: true
+rhel7cis_no_world_write_adjust: false
 rhel7cis_passwd_label: "{{ (this_item | default(item)).id }}: {{ (this_item | default(item)).dir }}"
-rhel7cis_dotperm_ansibleManaged: true
+rhel7cis_dotperm_ansibleManaged: false
 
 # RHEL-07-6.2.18 Clear users from shadow group
 rhel7cis_remove_shadow_grp_usrs: true
@@ -536,8 +536,8 @@ rhel7cis_remove_shadow_grp_usrs: true
 rhel7cis_audit_content: git
 
 # git
-rhel7cis_audit_file_git: "https://github.com/ansible-lockdown/{{ benchmark }}-Audit.git"
-rhel7cis_audit_git_version: main
+rhel7cis_audit_file_git: "https://github.com/ihotz/{{ benchmark }}-Audit.git"
+rhel7cis_audit_git_version: umbmain
 
 # copy:
 # rhel7cis_audit_local_copy: "some path to copy from"
